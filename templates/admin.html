@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <title>Admin | SSS Düzenleme</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;max-width:900px;margin:32px auto;padding:0 12px;}
+    h1{margin-bottom:10px}
+    form{margin:14px 0;padding:12px;border:1px solid #e3e3e3;border-radius:10px;background:#fafafa}
+    label{font-weight:600;display:block;margin-top:8px}
+    input,textarea{width:100%;padding:8px;border:1px solid #ddd;border-radius:8px}
+    button{margin-top:10px;padding:8px 14px;border:1px solid #444;border-radius:8px;background:#111;color:#fff;cursor:pointer}
+    button:hover{opacity:.9}
+    .row{display:grid;grid-template-columns:1fr 140px;gap:10px;align-items:end}
+    pre{background:#f6f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:12px;white-space:pre-wrap}
+    .muted{color:#666;font-size:14px}
+  </style>
+</head>
+<body>
+  <h1>Admin Paneli</h1>
+  <p class="muted">Erişim anahtarı: <code>ktu123</code></p>
+
+  <h2>Soru–Cevap Ekle / Güncelle</h2>
+  <form method="post" action="/admin/add">
+    <label>Erişim Anahtarı</label>
+    <input name="token" placeholder="ktu123" required />
+
+    <label>Soru (anahtar kelime)</label>
+    <input name="question" placeholder="harç, kayıt dondurma, danışman..." required />
+
+    <label>Cevap</label>
+    <textarea name="answer" rows="3" placeholder="Cevabı yazın" required></textarea>
+
+    <button type="submit">Ekle / Güncelle</button>
+  </form>
+
+  <h2>Kaydı Sil</h2>
+  <form method="post" action="/admin/delete" class="row">
+    <div>
+      <label>Erişim Anahtarı</label>
+      <input name="token" placeholder="ktu123" required />
+      <label>Silinecek Soru (anahtar)</label>
+      <input name="question" placeholder="Örn: harç" required />
+    </div>
+    <button type="submit">Sil</button>
+  </form>
+
+  <h2>Mevcut Kayıtlar</h2>
+  <!-- Python tarafında json.dumps ile hazırlanmış metni güvenle basıyoruz -->
+  <pre>{{ faq_json | safe }}</pre>
+</body>
+</html>

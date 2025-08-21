@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial; padding: 30px; max-width: 600px; margin: auto; }
+        #chatbox { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+        .message { margin: 10px 0; }
+        .user { color: blue; }
+        .bot { color: green; }
+    </style>
+</head>
+<body>
+
+<h2>Öğrenci Chatbot</h2>
+
+<div id="chatbox"></div>
+
+<input type="text" id="userInput" placeholder="Bir şey yazın..." style="width:80%;">
+<button onclick="sendMessage()">Gönder</button>
+
+<script>
+function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value;
+    if (!message) return;
+
+    addMessage("Sen", message, "user");
+    input.value = "";
+
+    fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message })
+    })
+    .then(response => response.json())
+    .then(data => {
+        addMessage("Chatbot", data.reply, "bot");
+    });
+}
+
+function addMessage(sender, text, cls) {
+    const div = document.getElementById("chatbox");
+    const msg = document.createElement("div");
+    msg.className = "message " + cls;
+    msg.textContent = sender + ": " + text;
+    div.appendChild(msg);
+    div.scrollTop = div.scrollHeight;
+}
+</script>
+
+</body>
+</html>

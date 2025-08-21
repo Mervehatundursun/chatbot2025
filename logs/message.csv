@@ -1,0 +1,7 @@
+# logs klasörü ve CSV dosyasını hazırla
+os.makedirs("logs", exist_ok=True)
+csv_path = os.path.join("logs", "messages.csv")
+if not os.path.exists(csv_path):
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["timestamp", "user_message", "reply", "needs_redirect"])
