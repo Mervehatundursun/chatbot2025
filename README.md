@@ -32,6 +32,7 @@ chatbot/
    └─ admin.html          # SSS yönetim paneli
 
 Kurulum
+
 Python 3.10+ önerilir. Windows PowerShell örneği aşağıda.
 cd D:\staj2025
 py -m venv .venv
@@ -42,6 +43,8 @@ pip install -r .\chatbot\requirements.txt
 Ortam Değişkeni
 Yönetim paneli işlemleri için admin anahtarı:
 $env:ADMIN_TOKEN = "ktu123"
+
+
 
 Çalıştırma
 python .\chatbot\app.py
@@ -101,6 +104,7 @@ Alanlar: zaman damgası, soru, cevap, skor
 
 Bu dosya staj raporunda “analitik” olarak kullanılabilir (en çok sorulanlar vb.).
 
+
 Güvenlik Notları
 
 ADMIN_TOKEN kodda sabit değil, ortam değişkeninden okunur.
@@ -121,9 +125,11 @@ docs/screens/admin.png – yönetim paneli
 
 İpucu: Bu görselleri repo’ya eklersen README’de ![başlık](dosya-yolu) ile gösterebilirsin.
 
+
+
 Geliştirme Yol Haritası (opsiyonel)
 
- Eşleştirmeyi RapidFuzz/TF‑IDF ile iyileştirme
+Eşleştirmeyi RapidFuzz/TF‑IDF ile iyileştirme
 
  Çok dilli (TR/EN) destek
 
@@ -136,6 +142,8 @@ Geliştirme Yol Haritası (opsiyonel)
 Katkı / Lisans
 
 PR’lar memnuniyetle. Lisans: MIT (isterseniz ekleyin).
+
+
 
 Küçük temizlik (öneri)
 
