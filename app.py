@@ -2,6 +2,12 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for
 from datetime import datetime
 from difflib import SequenceMatcher
 import os, csv, re, json
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+
 
 app = Flask(__name__)
 
